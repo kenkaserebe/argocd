@@ -52,7 +52,7 @@ resource "null_resource" "get_argocd_password" {
 # Output the ArgoCD server URL (if LoadBalancer is used)
 output "argocd_server_url" {
   description = "Run this command to get the ArgoCD server LoadBalancer URL"
-  value = "kubectl get svc argocd-server -n argoce -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'"
+  value = "kubectl get svc argocd-server -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'"
   depends_on = [helm_release.argocd]
 }
 
