@@ -31,7 +31,7 @@ resource "null_resource" "get_argocd_password" {
     command = <<-EOT
         echo "Waiting for ArgoCD secret to be created..."
         sleep 30 # Give Kubernetes a moment to create the secret
-        kubectl -n argocd get secret argcd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d > argocd-password.txt
+        kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d > argocd-password.txt
         echo "Password saved to argocd-password.txt"
     EOT
   }
