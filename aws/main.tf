@@ -60,6 +60,6 @@ output "argocd_server_url" {
 # Output the initial admin password created by the null_resource
 output "argocd_initial_secret" {
   description = "Initial ArgoCD admin password (saved locally to argocd-password.txt)"
-  value = fileexists("${path.module}/argocd-password.txt") ? file("${path.module}/argocd-password.txt") : "Password not yet available. Run 'cat argocd-password' after apply finishes."
+  value = fileexists("${path.module}/argocd-password.txt") ? file("${path.module}/argocd-password.txt") : "Password not yet available. Run 'cat argocd-password.txt' after apply finishes."
   depends_on = [null_resource.get_argocd_password]
 }
